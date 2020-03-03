@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start":  "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "node server.js"
   },
   "author": "Jeffy Arias",
   "license": "ISC",

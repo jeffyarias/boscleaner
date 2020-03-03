@@ -27,6 +27,7 @@ const now = moment()
   .minute(0);
 
 class Booking extends Component {
+  
   state = {
     name: "",
     email: "",
@@ -51,7 +52,7 @@ class Booking extends Component {
   };
 
   submitHandler = event => {
-    event.preventDefault();
+   event.preventDefault();
     if (!this.state.name || !this.state.address) {
       /* let x  = document.getElementById('mycheck');
   if(!x.checked) {
@@ -61,16 +62,20 @@ class Booking extends Component {
   */
       document.getElementById("name").focus();
     } else {
-      event.preventDefault();
+     event.preventDefault();
 
       this.setState({
         name: "",
         email: "",
         phone: "",
         address: "",
-        // bedrooms: 0,
-        // bathrooms: 0
-        // price: 0
+        bedrooms: 0,
+        bathrooms: 0,
+        price: 0,
+        startDate: "",
+        time: "",
+        date: "",
+        newtime: ""
       });
       document.getElementById("bedrooms").value = 0;
       document.getElementById("bathrooms").value = 0;
@@ -103,6 +108,7 @@ class Booking extends Component {
   };
 
   handleChange = date => {
+
     const d = date.toLocaleDateString();
     this.setState({
       startDate: date,
@@ -130,7 +136,7 @@ class Booking extends Component {
       var total =
         (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
         this.state.basePrice;
-       var name2 = this.state.name;
+       
 
       //const total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 + this.state.basePrice (this.state.bathrooms && this.state.bedrooms) ? 100 : 0;
       console.log(this.state.price);
@@ -160,16 +166,21 @@ class Booking extends Component {
     };
    // console.log("This is a tet for the: " + total);
    toast.configure();
+   
    const service = {
+    
      ...this.state
+     
 
    }
+   service.price = total;
 
    async function handlerToken(token) {
      //toast('Success! Check Email for details', {type: 'success'});
       //total2 = total
      
-      
+     
+ 
 
      // console.log('Hello world' + response.data)
       //console.log({token, total2})
@@ -267,6 +278,7 @@ class Booking extends Component {
                     min="0"
                     max="8"
                     autoComplete="false"
+                    defaultValue="0"
                   />{" "}
                 </label>
                 <label>
@@ -310,6 +322,7 @@ class Booking extends Component {
                       use12Hours
                       inputReadOnly
                       onClick={this.formHandler}
+                      
                     />
                   </div>
                 </div>
@@ -317,6 +330,7 @@ class Booking extends Component {
 
               <div className={styles.buttonsection}>
                 <StripeCheckout
+                preventDefault
                   amount={total * 100}
                   label="Credit Card"
                   name="Boston Maids"
@@ -327,7 +341,7 @@ class Booking extends Component {
                   stripeKey={"pk_test_yBMj0cqYIXUsXeJ0lnVBil1T"}
                 />
 
-                <button className={styles.buttom} type="submit" name="submit">
+                <button className={styles.buttom} onClick={this.submitHandler}>
                   Cash Payment
                 </button>
                 <span class="privacy-policy">

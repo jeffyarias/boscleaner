@@ -9,7 +9,6 @@ var path = require('path');
 var Router = require('router');
 const cors = require('cors');
 
-
 var router = Router();
 mongoose.connect
 const app = express();
@@ -126,69 +125,69 @@ const customer = await stripe.customers.create({
 });
 
 
-    // app.post('/api/form', (req, res) => {
-    //     // var newprice = req.body.price
+    app.post('/api/form', (req, res) => {
+        // var newprice = req.body.price
      
-    //      console.log(req.body);
+         console.log(req.body);
      
      
      
          
-    //      nodemailer.createTestAccount((err, account)=>{
-    //      const htmlEmail = `<h3>Contact Detail</h3>
-    //      <ul>
-    //      <li>Name: ${req.body.name}</li>
-    //      <li>Email: ${req.body.email}</li>
-    //      <li>Address: ${req.body.address}</li>
-    //      <li>Bedrooms: ${req.body.bedrooms}</li>
-    //      <li>Bathrooms: ${req.body.bathrooms}</li>
-    //      <li>Price: ${req.body.price}</li>
+         nodemailer.createTestAccount((err, account)=>{
+         const htmlEmail = `<h3>Contact Detail</h3>
+         <ul>
+         <li>Name: ${req.body.name}</li>
+         <li>Email: ${req.body.email}</li>
+         <li>Address: ${req.body.address}</li>
+         <li>Bedrooms: ${req.body.bedrooms}</li>
+         <li>Bathrooms: ${req.body.bathrooms}</li>
+         <li>Price: ${req.body.price}</li>
          
      
-    //      </ul>
+         </ul>
          
-    //      `
-    //      let transporter = nodemailer.createTransport({
-    //      service: 'gmail',
-    //      auth: {
-    //       user: 'jeffreyarias21@gmail.com',
-    //       pass: '182177!Scorpion'
+         `
+         let transporter = nodemailer.createTransport({
+         service: 'gmail',
+         auth: {
+          user: 'jeffreyarias21@gmail.com',
+          pass: '182177!Scorpion'
           
      
-    //      }
+         }
       
      
-    //      });
+         });
      
-    //      let mailOptions = {
-    //       from: 'Boston Maids',
-    //       to: 'jeffreyarias21@gmail.com' ,
-    //       subject: 'Cleaning',
-    //       text: 'Cleaning Booking',
-    //       html: htmlEmail,
-     
-     
+         let mailOptions = {
+          from: 'Boston Maids',
+          to: 'jeffreyarias21@gmail.com' ,
+          subject: 'Cleaning',
+          text: 'Cleaning Booking',
+          html: htmlEmail,
      
      
-    //      }
+     
+     
+         }
          
-    //  transporter.sendMail(mailOptions, (err, info)=>{
+     transporter.sendMail(mailOptions, (err, info)=>{
      
-    //  if(err) {
+     if(err) {
      
-    //  console.log(err);
+     console.log(err);
      
-    //  }else {
-    //   console.log("Email send: " + info.response);
-     
-     
-    //  }
-     
-    //  });
+     }else {
+      console.log("Email send: " + info.response);
      
      
-    //      });
-    //  });
+     }
+     
+     });
+     
+     
+         });
+     });
      
 
 
@@ -197,7 +196,7 @@ const customer = await stripe.customers.create({
 
 
 
-//app.get('/', (req, res) => res.send('API Running'));
+app.get('/', (req, res) => res.send('API Running'));
 
 const PORT = process.env.PORT || 3001;
 
