@@ -196,7 +196,7 @@ const customer = await stripe.customers.create({
 
 
 
-app.get('/', (req, res) => res.send('API Running'));
+
 
 if (process.env.NODE_ENV === 'production') {
    // Express will server up production assests
