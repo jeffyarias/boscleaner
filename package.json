@@ -9,9 +9,9 @@
   },
   "scripts": {
     "start":  "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon server.js",
+    
    "client": "npm run start --prefix client",
-  "dev": "node server.js"
+  
    },
   "author": "Jeffy Arias",
   "license": "ISC",
