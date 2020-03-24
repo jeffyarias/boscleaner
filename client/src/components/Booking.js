@@ -9,12 +9,12 @@ import StripeCheckout from "react-stripe-checkout";
 import TimePicker from "rc-time-picker";
 import moment from "moment";
 import "rc-time-picker/assets/index.css";
-import { Redirect } from "react-router-dom";
-import { Route } from "react-router-dom";
-import Success from "./success";
+//import { Redirect } from "react-router-dom";
+
+import Picker from 'react-mobile-picker-scroll';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import success from "./success";
+
 
 //import PropTypes from 'prop-types';
 /*<label>Bedrooms & Bathrooms <input type="password" name="field5" /></label>
@@ -145,19 +145,25 @@ class Booking extends Component {
     } else {
       total = 0;
     }
+
     const bedRommsHandler = event => {
-      //var newPrice  =  (20 * this.state.bedrooms);
-
+      var price = this.state.price
+     total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
+        this.state.basePrice;
+      
       this.setState({
-        bedrooms: event.target.value,
-
+        //bedrooms: event.target.value,
+          bedrooms: document.getElementById('numb').value,
         price: total
       });
     };
 
     const bathRoomshandler = event => {
       // var newPrice =  (20 * this.state.bathrooms);
-
+      
+     // var price = this.state.price
+      total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
+         this.state.basePrice;
       this.setState({
         bathrooms: event.target.value,
         
@@ -205,7 +211,58 @@ class Booking extends Component {
 
       }
     };
+    function incrementValue()
+    {  
+        var value = parseInt(document.getElementById('numb').value, 10);
+        value = isNaN(value) ? 0 : value;
+         if (value === 8) {return 8}
+         else {value++;
+       
+         }
+       
+       
+        document.getElementById('numb').value = value;
+        
+    }
     
+    function decrementValue()
+    {
+        var value = parseInt(document.getElementById('numb').value, 10);
+        value = isNaN(value) ? 0 : value;
+        if( value === 0) {return 0}
+         else {
+            value--;
+         }
+        
+        document.getElementById('numb').value = value;
+    }
+
+    function incrementValue2()
+    {  
+        var value = parseInt(document.getElementById('numb2').value, 10);
+        value = isNaN(value) ? 0 : value;
+         if (value === 8) {return 8}
+         else {value++;
+       
+         }
+       
+       
+        document.getElementById('numb2').value = value;
+        
+    }
+    
+    function decrementValue2()
+    {
+        var value = parseInt(document.getElementById('numb2').value, 10);
+        value = isNaN(value) ? 0 : value;
+        if( value === 0) {return 0}
+         else {
+            value--;
+         }
+        
+        document.getElementById('numb2').value = value;
+          
+    }
     return (
       <div className={styles.container}>
         <div className={styles.box1}>
@@ -265,11 +322,36 @@ class Booking extends Component {
 
               <div className={styles.section}>
                 <span>3</span>Bedrooms & Bathrooms
+                        
               </div>
+              <div className={styles.innerwrap}>
+              <label for="button">Bedrooms</label>
+              <div className={styles.btns} >
+              
+                 <button className={styles.btn} onClick={decrementValue} type="button">-</button>
+          <input id="numb" min="0" max="8" value="0"></input>
+          <button className={styles.btn} onClick={incrementValue} type="button">+</button>
+          
+          </div>
+          <label for="button">Bathrooms</label>
+          <div className={styles.btns} > 
+          <button className={styles.btn} onClick={()=>{decrementValue2(); bedRommsHandler();}} type="button">-</button>
+          <input id="numb2" min="0" max="8" value="0"></input>
+          <button className={styles.btn} onClick={()=>{incrementValue2(); bedRommsHandler();} }type="button">+</button>
+          
+          </div>
+
+    </div>
+
+
+
+         
+
+{/*             
               <div className={styles.innerwrap}>
                 <label>
                   Bedrooms
-                  <input
+                  <input className={styles.input}
                     id="bedrooms"
                     onChange={this.formHandler}
                     onClick={bedRommsHandler}
@@ -283,7 +365,7 @@ class Booking extends Component {
                 </label>
                 <label>
                   Bathrooms{" "}
-                  <input
+                  <input className={styles.input}
                     id="bathrooms"
                     onChange={this.formHandler}
                     onClick={bathRoomshandler}
@@ -295,7 +377,10 @@ class Booking extends Component {
                     defaultValue="0"
                   />{" "}
                 </label>
-              </div>
+                
+                
+              </div> */}
+              
               <div className={styles.section}>
                 <span>4</span>Date & Time
               </div>
@@ -324,6 +409,9 @@ class Booking extends Component {
                       onClick={this.formHandler}
                       
                     />
+
+
+
                   </div>
                 </div>
               </div>

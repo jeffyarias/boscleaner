@@ -317,3 +317,28 @@ background-image: linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(
     text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
 	border-radius: 4px;
 }
+
+
+
+
+.btns {
+
+	display: flex;
+	margin-bottom: 50px;
+  
+  }
+  
+  #numb {
+  
+	text-align: center;
+	font-size: larger;
+	border: 1px solid #3333;
+	width: 250px;
+  }
+  
+  .btn {
+	color: blue;
+	font-size: larger;
+	border-radius: 3px;
+	opacity: 0.8;
+  }
