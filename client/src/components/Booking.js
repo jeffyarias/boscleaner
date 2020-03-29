@@ -494,6 +494,7 @@ class Booking extends Component {
                       selected={this.state.startDate}
                       onChange={this.handleChange}
                       //onClick={this.formHandler}
+                      onClick={this.hideKeyb}
                       
                     />
                   </div>
@@ -509,7 +510,7 @@ class Booking extends Component {
                       format={format} 
                       use12Hours
                       inputReadOnly
-                     onClick={this.hideKeyb}
+                     
                       
                     />
 
