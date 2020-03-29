@@ -210,7 +210,11 @@ class Booking extends Component {
      
     
   }
-   
+   hideKeyb = ()=> {
+     document.activeElement().blur();
+
+
+   }
   render() {
 
    
@@ -490,7 +494,7 @@ class Booking extends Component {
                       selected={this.state.startDate}
                       onChange={this.handleChange}
                       //onClick={this.formHandler}
-                      inputReadOnly
+                      
                     />
                   </div>
                   <div className={styles.time}>
@@ -505,7 +509,7 @@ class Booking extends Component {
                       format={format} 
                       use12Hours
                       inputReadOnly
-                     // onClick={this.formHandler}
+                     onClick={this.hideKeyb}
                       
                     />
 
