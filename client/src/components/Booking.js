@@ -47,7 +47,9 @@ class Booking extends Component {
 
   formHandler = event => {
     this.setState({
-      [event.target.name]: event.target.value
+
+     [event.target.name]: event.target.value
+     
     });
   };
 
@@ -62,6 +64,7 @@ class Booking extends Component {
   */
       document.getElementById("name").focus();
     } else {
+
      event.preventDefault();
 
       this.setState({
@@ -77,8 +80,8 @@ class Booking extends Component {
         date: "",
         newtime: ""
       });
-      document.getElementById("bedrooms").value = 0;
-      document.getElementById("bathrooms").value = 0;
+      // document.getElementById("bedrooms").value = 0;
+      // document.getElementById("bathrooms").value = 0;
 
 
 
@@ -128,6 +131,86 @@ class Booking extends Component {
     });
   };
 
+  incrementBathrooms =(event)=>
+
+    { 
+     // const bath = document.getElementById('bathrooms')
+     if(this.state.bathrooms < 9) {
+      this.setState({ bathrooms: this.state.bathrooms + 1 });
+
+     }else {
+       
+      
+      return
+    
+    }
+       
+      
+      
+
+     
+    //     var value = parseInt(document.getElementById('numb2').value, 10);
+    //     value = isNaN(value) ? 0 : value;
+    //      if (value === 8) {return 8}
+    //      else {value++;
+          
+       
+    //      }
+       
+       
+    //  document.getElementById('numb2').value = value;
+   
+        
+      
+        
+    }
+
+    decrementBathrooms =(event)=>
+
+    { 
+     // const bath = document.getElementById('bathrooms')
+      if(this.state.bathrooms > 0) {
+        this.setState({ bathrooms: this.state.bathrooms - 1 });
+
+
+      } else { 
+        return
+      
+      
+      
+      }
+       
+     
+      
+    }
+
+
+    
+  incrementBedrooms =(event)=>
+
+  { 
+   // const bath = document.getElementById('bathrooms')
+   
+     if(this.state.bedrooms  < 9) {
+    this.setState({ bedrooms: this.state.bedrooms + 1 });
+  }else {return}
+
+  }
+  decrementBedrooms =(event)=>
+
+  { 
+
+    if (this.state.bedrooms > 0) {
+
+      this.setState({ bedrooms: this.state.bedrooms - 1 });
+
+    } else {return} 
+   // const bath = document.getElementById('bathrooms')
+   
+     
+    
+  }
+   
   render() {
 
    
@@ -147,26 +230,30 @@ class Booking extends Component {
     }
 
     const bedRommsHandler = event => {
-      var price = this.state.price
-     total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
-        this.state.basePrice;
+    //   var price = this.state.price
+    //  total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
+    //     this.state.basePrice;
       
       this.setState({
-        //bedrooms: event.target.value,
-          bedrooms: document.getElementById('numb').value,
+      bedrooms: event.target.value,
+        //bedrooms: document.getElementById('numb').value,
         price: total
       });
     };
 
     const bathRoomshandler = event => {
       // var newPrice =  (20 * this.state.bathrooms);
+            
       
+       
+        //document.getElementById('numb2').value = value;
      // var price = this.state.price
-      total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
-         this.state.basePrice;
+      //total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
+        // this.state.basePrice;
+        //let newvalue = document.getElementById('numb').value;
       this.setState({
-        bathrooms: event.target.value,
-        
+     bathrooms: event.target.value,
+         //bathrooms: value,
         price: total
       });
     };
@@ -213,33 +300,10 @@ class Booking extends Component {
     };
     function incrementValue()
     {  
-        var value = parseInt(document.getElementById('numb').value, 10);
-        value = isNaN(value) ? 0 : value;
-         if (value === 8) {return 8}
-         else {value++;
-       
-         }
-       
-       
-        document.getElementById('numb').value = value;
-        
-    }
-    
-    function decrementValue()
-    {
-        var value = parseInt(document.getElementById('numb').value, 10);
-        value = isNaN(value) ? 0 : value;
-        if( value === 0) {return 0}
-         else {
-            value--;
-         }
-        
-        document.getElementById('numb').value = value;
-    }
+      console.log(this.state.bathrooms)
+      //this.setState({ clicks: this.state.clicks + 1 });
 
-    function incrementValue2()
-    {  
-        var value = parseInt(document.getElementById('numb2').value, 10);
+        var value = parseInt(document.getElementById('numb').value, 10);
         value = isNaN(value) ? 0 : value;
          if (value === 8) {return 8}
          else {value++;
@@ -247,22 +311,55 @@ class Booking extends Component {
          }
        
        
-        document.getElementById('numb2').value = value;
+        document.getElementById('numb').value = value;
+       
+        };
         
-    }
+  
     
-    function decrementValue2()
+    const decrementValue =(event)=>
     {
-        var value = parseInt(document.getElementById('numb2').value, 10);
+        var value = parseInt(document.getElementById('numb').value, 10);
         value = isNaN(value) ? 0 : value;
         if( value === 0) {return 0}
          else {
             value--;
          }
         
-        document.getElementById('numb2').value = value;
+        document.getElementById('numb').value = value;
+        
+        };
+    
+
+//     function incrementValue2()
+
+//     {  
+//      console.log(service.bathrooms)
+//  //this.setState({ bathrooms: this.state.bathrooms + 1 });
+//         var value = parseInt(document.getElementById('numb2').value, 10);
+//         value = isNaN(value) ? 0 : value;
+//          if (value === 8) {return 8}
+//          else {value++;
+       
+//          }
+       
+       
+//         document.getElementById('numb2').value = value;
+        
+//     }
+    
+    // function decrementValue2()
+    // {
+    //     var value = parseInt(document.getElementById('numb2').value, 10);
+    //     value = isNaN(value) ? 0 : value;
+    //     if( value === 0) {return 0}
+    //      else {
+    //         value--;
+    //      }
+        
+    //     document.getElementById('numb2').value = value;
           
-    }
+    // }
     return (
       <div className={styles.container}>
         <div className={styles.box1}>
@@ -321,39 +418,34 @@ class Booking extends Component {
               </div>
 
               <div className={styles.section}>
-                <span>3</span>Bedrooms & Bathrooms
-                        
-              </div>
+                 </div>
               <div className={styles.innerwrap}>
               <label for="button">Bedrooms</label>
               <div className={styles.btns} >
               
-                 <button className={styles.btn} onClick={decrementValue} type="button">-</button>
-          <input id="numb" min="0" max="8" value="0"></input>
-          <button className={styles.btn} onClick={incrementValue} type="button">+</button>
+                 <button className={styles.btn} onClick={this.decrementBedrooms} type="button">-</button>
+    <button className={styles.btntext} type="button" disabled id="bedrooms">{this.state.bedrooms} Bedrooms</button>
+          <button className={styles.btn} onClick={this.incrementBedrooms} type="button">+</button>
           
           </div>
           <label for="button">Bathrooms</label>
           <div className={styles.btns} > 
-          <button className={styles.btn} onClick={()=>{decrementValue2(); bedRommsHandler();}} type="button">-</button>
-          <input id="numb2" min="0" max="8" value="0"></input>
-          <button className={styles.btn} onClick={()=>{incrementValue2(); bedRommsHandler();} }type="button">+</button>
+          <button className={styles.btn} onClick={this.decrementBathrooms} type="button">-</button>
+    <button className={styles.btntext} type="button" disabled id="bathrooms">{this.state.bathrooms} Bathrooms</button>
+          <button className={styles.btn} onClick={this.incrementBathrooms} type="button">+</button>
           
-          </div>
-
-    </div>
-
-
+          </div> 
 
          
 
-{/*             
-              <div className={styles.innerwrap}>
+            
+                {/* <span>3</span>Bedrooms & Bathrooms
+                <div className={styles.innerwrap}>
                 <label>
                   Bedrooms
                   <input className={styles.input}
                     id="bedrooms"
-                    onChange={this.formHandler}
+                    //onChange={this.formHandler}
                     onClick={bedRommsHandler}
                     type="number"
                     name="bedRooms"
@@ -367,7 +459,7 @@ class Booking extends Component {
                   Bathrooms{" "}
                   <input className={styles.input}
                     id="bathrooms"
-                    onChange={this.formHandler}
+                   // onChange={this.formHandler}
                     onClick={bathRoomshandler}
                     type="number"
                     name="bathRooms"
@@ -379,7 +471,13 @@ class Booking extends Component {
                 </label>
                 
                 
-              </div> */}
+              </div>
+               */}
+
+    </div>
+
+
+             
               
               <div className={styles.section}>
                 <span>4</span>Date & Time
@@ -391,7 +489,7 @@ class Booking extends Component {
                     <DatePicker
                       selected={this.state.startDate}
                       onChange={this.handleChange}
-                      onClick={this.formHandler}
+                      //onClick={this.formHandler}
                     />
                   </div>
                   <div className={styles.time}>
@@ -403,10 +501,10 @@ class Booking extends Component {
                       defaultValue={now}
                       className="xxx"
                       onChange={this.onchange}
-                      format={format}
+                      format={format} 
                       use12Hours
                       inputReadOnly
-                      onClick={this.formHandler}
+                     // onClick={this.formHandler}
                       
                     />
 

@@ -55,7 +55,8 @@ const customer = await stripe.customers.create({
          <li>Bedrooms: ${service.bedrooms}</li>
          <li>Bathrooms: ${service.bathrooms}</li>
          <li>Price: ${service.price}</li>
-         
+         <li>Date: ${service.date}</li>
+         <li>Time: ${service.time}</li>
      
          </ul>
          

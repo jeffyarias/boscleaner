@@ -342,3 +342,9 @@ background-image: linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(
 	border-radius: 3px;
 	opacity: 0.8;
   }
+
+  .btntext{
+   width: 80%;
+   height: 50px;
+
+  }
