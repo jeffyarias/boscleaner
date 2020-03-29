@@ -490,6 +490,7 @@ class Booking extends Component {
                       selected={this.state.startDate}
                       onChange={this.handleChange}
                       //onClick={this.formHandler}
+                      inputReadOnly
                     />
                   </div>
                   <div className={styles.time}>

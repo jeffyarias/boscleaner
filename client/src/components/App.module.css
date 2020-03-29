@@ -346,5 +346,7 @@ background-image: linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(
   .btntext{
    width: 80%;
    height: 50px;
+   font-weight: bolder;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   }
