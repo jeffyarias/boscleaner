@@ -211,7 +211,7 @@ class Booking extends Component {
     
   }
    hideKeyb = ()=> {
-    document.getElementById('datepicker'.focus()
+    document.getElementById('datepicker').focus();
 
 
    }
