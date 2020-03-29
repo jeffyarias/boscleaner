@@ -211,7 +211,7 @@ class Booking extends Component {
     
   }
    hideKeyb = ()=> {
-     document.activeElement().blur();
+    document.getElementById('datepicker'.focus()
 
 
    }
@@ -488,7 +488,7 @@ class Booking extends Component {
               </div>
               <div className={styles.innerwrap}>
                 <div className={styles.datetime}>
-                  <div className={styles.date}>
+                  <div id="datepicker"className={styles.date}>
                     <label>Choose a Date </label>
                     <DatePicker
                       selected={this.state.startDate}
