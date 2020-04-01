@@ -165,7 +165,7 @@ class Booking extends Component {
       
         
     }
-
+//decrement bathrooms
     decrementBathrooms =(event)=>
 
     { 
