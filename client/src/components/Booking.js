@@ -9,6 +9,7 @@ import StripeCheckout from "react-stripe-checkout";
 import TimePicker from "rc-time-picker";
 import moment from "moment";
 import "rc-time-picker/assets/index.css";
+import Extras from "./extras";
 //import { Redirect } from "react-router-dom";
 
 import Picker from 'react-mobile-picker-scroll';
@@ -477,6 +478,8 @@ class Booking extends Component {
                 
               </div>
                */}
+
+               <Extras />
 
     </div>
 
