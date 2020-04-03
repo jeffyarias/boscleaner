@@ -4,7 +4,7 @@
     justify-content: space-between;
 
 }
-.insidefridge {
+.desactive {
    background-color: lightblue;
   
     width: 90px;
@@ -16,12 +16,27 @@
 
 }
 
+
+.active {
+    background-color:#088eb9;
+   
+     width: 90px;
+     height: 90px;
+     border-radius: 50%;
+     text-align: center;
+ 
+ 
+ 
+ }
+ 
+
 img{
 width: 30px;
 margin-top: 30px;
 
 
 }
+
 
 .title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,11 +45,12 @@ margin-top: 30px;
 font-size: 70%;
 }
 
-@media screen and (min-width:632px) {
+@media screen and (max-width:375px) {
     .extrasIcons {
         display: flex;
-        flex-direction: row;
-        align-content: space-between;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        
 
     }
 }

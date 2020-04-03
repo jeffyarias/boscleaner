@@ -4,14 +4,14 @@ import fridge from '../images/kitchen.png';
 import oven from '../images/gas-stove.png';
 import truck from '../images/moving-truck.png';
 import wiping from '../images/wiping.png'
-const extras = ()=> {
+const extras = (props)=> {
 
 
     return (
         <div className={extra.extrasIcons}>
-       <div className={extra.insidefridge}>
+       <div onClick={props.onclick} className={props.classActive}>
         <img src={fridge} />
-        <p className={extra.title}>Inside the fridge</p>
+        <p  className={extra.title}>Inside the fridge</p>
     
        </div>
        <div className={extra.insidefridge}>

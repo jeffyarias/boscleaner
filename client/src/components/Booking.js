@@ -43,7 +43,16 @@ class Booking extends Component {
     startDate: "",
     time: "",
     date: "",
-    newtime: ""
+    newtime: "",
+    fridgeStatus: true,
+    fridgeActive: false,
+    ovenStatus: false,
+    moveStatus: false,
+    wallStatus: false,
+    extraPrice: 0,
+    
+
+
   };
 
   formHandler = event => {
@@ -216,14 +225,44 @@ class Booking extends Component {
 
 
    }
-  render() {
+  
+   changeExtras = ()=> {
+     let charge = 0
+     if (this.state.fridgeStatus === true) {
+      charge = 25 
+      this.setState((prevState, props) => ({
+        extraPrice: prevState.extraPrice + 25,
+        fridgeStatus: !this.state.fridgeStatus
+      }));
+      console.log('Hello State')
+      console.log(this.state.price)
+      console.log(this.state.fridgeStatus)
+      console.log(this.state.price)
+      console.log(charge)
+     } else {
+      this.setState((prevState, props) => ({
+        extraPrice: prevState.extraPrice - 25,
+        fridgeStatus: !this.state.fridgeStatus
+      }));
+      }
+      console.log('Hello State')
+      console.log(this.state.price)
+      console.log(this.state.fridgeStatus)
+      console.log(this.state.price)
+      console.log(charge)
+     }
+   
 
    
+  render() {
+const activeClass = this.state.fridgeStatus ? "active"  : "desactive";
+
+   console.log(activeClass)
     //console.log(this.props);
     if (this.state.bathrooms > 0 || this.state.bedrooms) {
       var total =
         (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
-        this.state.basePrice;
+        this.state.basePrice + this.state.extraPrice;
        
 
       //const total = (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 + this.state.basePrice (this.state.bathrooms && this.state.bedrooms) ? 100 : 0;
@@ -479,7 +518,12 @@ class Booking extends Component {
               </div>
                */}
 
-               <Extras />
+               <Extras onClick={this.props.onclick}
+                onclick={this.changeExtras}
+                classActive={this.activeClass}
+                
+               
+               />
 
     </div>
 
@@ -497,7 +541,7 @@ class Booking extends Component {
                       selected={this.state.startDate}
                       onChange={this.handleChange}
                       //onClick={this.formHandler}
-                      onClick={this.hideKeyb}
+                      //onClick={this.hideKeyb}
                       
                     />
                   </div>
