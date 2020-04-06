@@ -276,14 +276,42 @@ class Booking extends Component {
      }
      
       
-      
-
-
-
+     else if (name === 'move') {
+      if (this.state.moveStatus === true) {
+        
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice + 25,
+          moveStatus: !this.state.moveStatus
+        }));
+       
+        
+       } else {
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice - 25,
+          moveStatus: !this.state.moveStatus
+        }));
+        }
 
       
      }
-   
+     else if (name === 'wall') {
+      if (this.state.wallStatus === true) {
+        
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice + 25,
+          wallStatus: !this.state.wallStatus
+        }));
+       
+        
+       } else {
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice - 25,
+          wallStatus: !this.state.wallStatus
+        }));
+        }
+
+    }
+  }
    //  changeExtras2 = ()=> {
      
       // if (this.state.ovenStatus === true) {
@@ -309,9 +337,9 @@ class Booking extends Component {
   render() {
 
 const fridgeClass = this.state.fridgeStatus ? "desactive"  : "active";
-const classOven = this.state.ovenStatus ? "desactive" : "active";
-const classMove = this.state.moveStatus ? "desactive" : "active";
-const classWall = this.state.moveStatus ? "desactive" : "active";
+const ovenClass = this.state.ovenStatus ? "desactive" : "active";
+const moveClass = this.state.moveStatus ? "desactive" : "active";
+const wallClass = this.state.wallStatus ? "desactive" : "active";
 
 //console.log(ovenClass)
   //  console.log(this.props);
@@ -579,7 +607,7 @@ const classWall = this.state.moveStatus ? "desactive" : "active";
                 classFridge={fridgeClass}
                 classOven={ovenClass}
                 classMove={moveClass}
-                classWall={wallMove}
+                classWall={wallClass}
                 
                
                />

@@ -77,7 +77,7 @@ const extras = (props)=> {
            <img src={oven}/>
            <p className={extra.title}>Inside the Oven</p>
        </div>
-       <div onClick={moveFunc} className={extra.moveClass.join(' ')}>
+       <div onClick={moveFunc} className={moveClass.join(' ')}>
            <img src={truck }/>
            <p className={extra.title}>Move in/out</p>
            </div>
