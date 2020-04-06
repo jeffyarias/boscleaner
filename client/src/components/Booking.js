@@ -44,11 +44,13 @@ class Booking extends Component {
     time: "",
     date: "",
     newtime: "",
+
+
+    
     fridgeStatus: true,
-    fridgeActive: false,
-    ovenStatus: false,
-    moveStatus: false,
-    wallStatus: false,
+    ovenStatus: true,
+    moveStatus: true,
+    wallStatus: true,
     extraPrice: 0,
     
 
@@ -226,39 +228,93 @@ class Booking extends Component {
 
    }
   
-   changeExtras = ()=> {
-     let charge = 0
-     if (this.state.fridgeStatus === true) {
-      charge = 25 
-      this.setState((prevState, props) => ({
-        extraPrice: prevState.extraPrice + 25,
-        fridgeStatus: !this.state.fridgeStatus
-      }));
-      console.log('Hello State')
-      console.log(this.state.price)
-      console.log(this.state.fridgeStatus)
-      console.log(this.state.price)
-      console.log(charge)
-     } else {
-      this.setState((prevState, props) => ({
-        extraPrice: prevState.extraPrice - 25,
-        fridgeStatus: !this.state.fridgeStatus
-      }));
-      }
-      console.log('Hello State')
-      console.log(this.state.price)
-      console.log(this.state.fridgeStatus)
-      console.log(this.state.price)
-      console.log(charge)
+   
+   
+   changeExtras = (name)=> {
+     
+     console.log(name)
+     if(name == 'fridge') {
+
+      if (this.state.fridgeStatus === true) {
+       
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice + 25,
+          fridgeStatus: !this.state.fridgeStatus
+        }));
+        
+        
+       } else {
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice - 25,
+          fridgeStatus: !this.state.fridgeStatus
+        }));
+        }
+
+
+      
+     }
+      
+     else if (name === 'oven') {
+      if (this.state.ovenStatus === true) {
+        
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice + 25,
+          ovenStatus: !this.state.ovenStatus
+        }));
+       
+        
+       } else {
+        this.setState((prevState, props) => ({
+          extraPrice: prevState.extraPrice - 25,
+          ovenStatus: !this.state.ovenStatus
+        }));
+        }
+       
+
+
+
+     }
+     
+      
+      
+
+
+
+
+      
      }
    
+   //  changeExtras2 = ()=> {
+     
+      // if (this.state.ovenStatus === true) {
+        
+      //  this.setState((prevState, props) => ({
+      //    extraPrice: prevState.extraPrice + 25,
+      //    ovenStatus: !this.state.ovenStatus
+      //  }));
+      
+       
+      // } else {
+      //  this.setState((prevState, props) => ({
+      //    extraPrice: prevState.extraPrice - 25,
+      //    ovenStatus: !this.state.ovenStatus
+      //  }));
+      //  }
+      
+      // }
+    
+ 
 
    
   render() {
-const activeClass = this.state.fridgeStatus ? "active"  : "desactive";
 
-   console.log(activeClass)
-    //console.log(this.props);
+const fridgeClass = this.state.fridgeStatus ? "desactive"  : "active";
+const classOven = this.state.ovenStatus ? "desactive" : "active";
+const classMove = this.state.moveStatus ? "desactive" : "active";
+const classWall = this.state.moveStatus ? "desactive" : "active";
+
+//console.log(ovenClass)
+  //  console.log(this.props);
     if (this.state.bathrooms > 0 || this.state.bedrooms) {
       var total =
         (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
@@ -518,9 +574,12 @@ const activeClass = this.state.fridgeStatus ? "active"  : "desactive";
               </div>
                */}
 
-               <Extras onClick={this.props.onclick}
+               <Extras 
                 onclick={this.changeExtras}
-                classActive={this.activeClass}
+                classFridge={fridgeClass}
+                classOven={ovenClass}
+                classMove={moveClass}
+                classWall={wallMove}
                 
                
                />
