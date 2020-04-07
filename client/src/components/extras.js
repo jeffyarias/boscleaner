@@ -57,6 +57,7 @@ const extras = (props)=> {
     const moveFunc  = ()=>{
       const  name = "move"
       props.onclick(name)
+      
     }
 
     const wallFunc  = ()=>{
