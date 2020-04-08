@@ -490,6 +490,7 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
     // }
     return (
       <div className={styles.container}>
+      
         <div className={styles.box1}>
           <div className={styles.formstyle10}>
             <h1>

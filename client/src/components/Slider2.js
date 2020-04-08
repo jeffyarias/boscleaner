@@ -3,11 +3,13 @@ import "../style.css";
 import photo1 from "../images/01.jpg";
 import photo2 from "../images/02.jpg";
 import photo3 from "../images/03.jpg";
-
+import styles from "./App.module.css"
 
 class Slider2 extends Component {
 
     render()  {
+
+
   //const slides = [photo1, photo2, photo3];
  
   const auto = true; // Auto scroll
@@ -43,7 +45,10 @@ class Slider2 extends Component {
   }
 
   return (
+  
+    
     <div class="slider">
+    
       <div id="img1" class="slide current">
         <img src={photo1} />
       </div>
@@ -53,6 +58,8 @@ class Slider2 extends Component {
       <div id="img3" class="slide  ">
         <img src={photo3}  />
       </div>
+
+      
     </div>
   );
 };
