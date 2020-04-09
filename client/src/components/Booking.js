@@ -11,6 +11,7 @@ import moment from "moment";
 import "rc-time-picker/assets/index.css";
 import Extras from "./extras";
 //import { Redirect } from "react-router-dom";
+import Sticky from './sticky';
 
 import Picker from 'react-mobile-picker-scroll';
 import { toast } from 'react-toastify';
@@ -489,7 +490,14 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
           
     // }
     return (
+      
       <div className={styles.container}>
+        <Sticky 
+        date = {this.state.date}
+        time = {this.state.time}
+        total = {total}
+        
+        />
       
         <div className={styles.box1}>
           <div className={styles.formstyle10}>

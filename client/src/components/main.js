@@ -6,7 +6,9 @@ import Booking from './Booking';
 import Success from './success';
 import About from './about';
 import { Route, Link } from 'react-router-dom';
+import Sticky from './sticky';
 import styles from './App.module.css';
+
 
 
 
@@ -18,11 +20,7 @@ render() {
     return(
         <div>
     <header>
-    <div className={styles.sticky} >
-        <p>Date 05/12/2022 </p>
-        <p>Time 12:50</p>
-        <p>Amout $200</p>
-        </div>
+    
 <div class="nav">
   <input type="checkbox" id="nav-check"/>
   <div class="nav-header">
@@ -50,6 +48,7 @@ render() {
 </div>
 
 </header>
+{/* <Sticky /> */}
  {/*<Route path="/" exact render={()=><h1>Hello World</h1>} />
 <Route path="/success"  render={()=><h1>Hello World2</h1>} /> */}
 <Route path="/" exact component={Slider} />
