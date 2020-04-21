@@ -555,7 +555,8 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
               </div>
 
               <div className={styles.section}>
-                 </div>
+              <span>3</span>Bathrooms & Bedrooms
+              </div>
               <div className={styles.innerwrap}>
               <label for="button">Bedrooms</label>
               <div className={styles.btns} >
@@ -571,7 +572,9 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
     <button className={styles.btntext} type="button" disabled id="bathrooms">{this.state.bathrooms} Bathrooms</button>
           <button className={styles.btn} onClick={this.incrementBathrooms} type="button">+</button>
           
-          </div> 
+          </div>
+                 </div>
+               
 
          
 
@@ -611,7 +614,14 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
               </div>
                */}
 
-               <Extras 
+              
+
+    
+<div className={styles.section}>
+                <span>4</span>Extras
+              </div>
+              <div className={styles.innerwrap}>
+    <Extras 
                 onclick={this.changeExtras}
                 classFridge={fridgeClass}
                 classOven={ovenClass}
@@ -620,14 +630,10 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
                 
                
                />
-
-    </div>
-
-
-             
+             </div>
               
               <div className={styles.section}>
-                <span>4</span>Date & Time
+                <span>5</span>Date & Time
               </div>
               <div className={styles.innerwrap}>
                 <div className={styles.datetime}>
