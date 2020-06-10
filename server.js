@@ -85,7 +85,6 @@ const customer = await stripe.customers.create({
      
      
      
-     
          }
          
      transporter.sendMail(mailOptions, (err, info)=>{
