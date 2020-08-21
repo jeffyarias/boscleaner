@@ -1,3 +1,4 @@
+import sslRedirect from 'heroku-ssl-redirect';
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,9 +10,16 @@ var path = require('path');
 var Router = require('router');
 const cors = require('cors');
 
+
+
+ 
+// enable ssl redirect
+
+
 var router = Router();
 mongoose.connect
 const app = express();
+app.use(sslRedirect());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

@@ -1,3 +1,4 @@
+
 import React, { Component, useState} from "react";
 import styles from "./App.module.css";
 import Modal from "./modal";
@@ -5,6 +6,7 @@ import axios from "axios";
 import "font-awesome/css/font-awesome.min.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 import StripeCheckout from "react-stripe-checkout";
 import TimePicker from "rc-time-picker";
 import moment from "moment";
@@ -17,6 +19,7 @@ import Picker from 'react-mobile-picker-scroll';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const keys = require('./config/keys');
 
 //import PropTypes from 'prop-types';
 /*<label>Bedrooms & Bathrooms <input type="password" name="field5" /></label>
@@ -679,7 +682,7 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
                   token={handlerToken}
                   //token={ (token) =>{axios.post('/api/stripe', token)}}
 
-                  stripeKey={"pk_test_yBMj0cqYIXUsXeJ0lnVBil1T"}
+                  stripeKey={keys.Publishable_Key}
                 />
 
                 <button className={styles.buttom} onClick={this.submitHandler}>
