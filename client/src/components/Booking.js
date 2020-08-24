@@ -20,6 +20,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const keys = require('./config/keys');
+const Publishable_Key = process.env.PUBLISHABLE_KEY
 
 //import PropTypes from 'prop-types';
 /*<label>Bedrooms & Bathrooms <input type="password" name="field5" /></label>
@@ -682,7 +683,7 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
                   token={handlerToken}
                   //token={ (token) =>{axios.post('/api/stripe', token)}}
 
-                  stripeKey={keys.Publishable_Key}
+                  stripeKey={Publishable_Key}
                 />
 
                 <button className={styles.buttom} onClick={this.submitHandler}>
