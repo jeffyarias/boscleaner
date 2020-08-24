@@ -682,7 +682,7 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
                   token={handlerToken}
                   //token={ (token) =>{axios.post('/api/stripe', token)}}
 
-                  stripeKey={pk_live_LgCWFDUqxmojNIGAZKRETwAx}
+                  stripeKey={keys.Publishable_Key}
                 />
 
                 <button className={styles.buttom} onClick={this.submitHandler}>
