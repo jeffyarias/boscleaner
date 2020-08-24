@@ -9,16 +9,17 @@ const axios = require('axios');
 var path = require('path');
 var Router = require('router');
 const cors = require('cors');
+const enforce = require('express-sslify');
 
 
 
  
-// enable ssl redirect
 
 
 var router = Router();
 mongoose.connect
 const app = express();
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(cors());
 app.use(bodyParser.json());
