@@ -19,8 +19,8 @@ import Picker from 'react-mobile-picker-scroll';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const keys = require('./config/keys');
-const Publishable_Key = process.env.PUBLISHABLE_KEY
+const keys2 = require('./config/keys2');
+
 
 //import PropTypes from 'prop-types';
 /*<label>Bedrooms & Bathrooms <input type="password" name="field5" /></label>
@@ -683,7 +683,7 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
                   token={handlerToken}
                   //token={ (token) =>{axios.post('/api/stripe', token)}}
 
-                  stripeKey={Publishable_Key}
+                  stripeKey={keys2.pusblishable_keys2}
                 />
 
                 <button className={styles.buttom} onClick={this.submitHandler}>
