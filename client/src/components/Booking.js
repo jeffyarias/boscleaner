@@ -49,9 +49,7 @@ class Booking extends Component {
     time: "",
     date: "",
     newtime: "",
-
-
-    
+    cash: false,
     fridgeStatus: true,
     ovenStatus: true,
     moveStatus: true,
@@ -70,7 +68,7 @@ class Booking extends Component {
     });
   };
 
-  submitHandler = event => {
+  submitHandler = (event) => {
    event.preventDefault();
     if (!this.state.name || !this.state.address) {
       /* let x  = document.getElementById('mycheck');
@@ -84,19 +82,20 @@ class Booking extends Component {
 
      event.preventDefault();
 
-      this.setState({
-        name: "",
-        email: "",
-        phone: "",
-        address: "",
-        bedrooms: 0,
-        bathrooms: 0,
-        price: 0,
-        startDate: "",
-        time: "",
-        date: "",
-        newtime: ""
-      });
+      // this.setState({
+      //   name: "",
+      //   email: "",
+      //   phone: "",
+      //   address: "",
+      //   bedrooms: 0,
+      //   bathrooms: 0,
+      //   price: 0,
+      //   startDate: "",
+      //   time: "",
+      //   date: "",
+      //   newtime: "",
+      //   cash: true
+      // });
       // document.getElementById("bedrooms").value = 0;
       // document.getElementById("bathrooms").value = 0;
 
@@ -110,9 +109,14 @@ class Booking extends Component {
         address,
         bedrooms,
         bathrooms,
-        price
-      } = this.state;
+        price,
+        cash
 
+      } = this.state;
+      const total2 =
+        (Number(this.state.bedrooms) + Number(this.state.bathrooms)) * 20 +
+        this.state.basePrice + this.state.extraPrice;
+        
       axios.post("/api/form", {
         name,
         email,
@@ -120,8 +124,27 @@ class Booking extends Component {
         address,
         bedrooms,
         bathrooms,
-        price
+        total2,
+        cash
+        
       });
+      this.setState({
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+        bedrooms: 0,
+        bathrooms: 0,
+        price: 0,
+        startDate: "",
+        time: "",
+        date: "",
+        newtime: "",
+        cash: true
+      });
+      document.getElementById("bedrooms").value = 0;
+      document.getElementById("bathrooms").value = 0;
+
     }
 
     // axios.get('/api/success').then(response =>{console.log(response)});
@@ -153,7 +176,9 @@ class Booking extends Component {
     { 
      // const bath = document.getElementById('bathrooms')
      if(this.state.bathrooms < 9) {
-      this.setState({ bathrooms: this.state.bathrooms + 1 });
+      this.setState({ bathrooms: this.state.bathrooms + 1,
+      price: this.total});
+      
 
      }else {
        
@@ -187,7 +212,9 @@ class Booking extends Component {
     { 
      // const bath = document.getElementById('bathrooms')
       if(this.state.bathrooms > 0) {
-        this.setState({ bathrooms: this.state.bathrooms - 1 });
+        this.setState({ bathrooms: this.state.bathrooms - 1,
+        price: this.total });
+        
 
 
       } else { 
@@ -209,7 +236,8 @@ class Booking extends Component {
    // const bath = document.getElementById('bathrooms')
    
      if(this.state.bedrooms  < 9) {
-    this.setState({ bedrooms: this.state.bedrooms + 1 });
+    this.setState({ bedrooms: this.state.bedrooms + 1,
+    price: this.total });
   }else {return}
 
   }
@@ -219,7 +247,8 @@ class Booking extends Component {
 
     if (this.state.bedrooms > 0) {
 
-      this.setState({ bedrooms: this.state.bedrooms - 1 });
+      this.setState({ bedrooms: this.state.bedrooms - 1,
+      price: this.total });
 
     } else {return} 
    // const bath = document.getElementById('bathrooms')
@@ -238,7 +267,7 @@ class Booking extends Component {
    changeExtras = (name)=> {
      
      console.log(name)
-     if(name == 'fridge') {
+     if(name === 'fridge') {
 
       if (this.state.fridgeStatus === true) {
        
@@ -431,6 +460,10 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
 
       }
     };
+    
+   
+       
+
     function incrementValue()
     {  
       console.log(this.state.bathrooms)
@@ -686,7 +719,7 @@ const wallClass = this.state.wallStatus ? "desactive" : "active";
                   stripeKey={keys2.pusblishable_keys2}
                 />
 
-                <button className={styles.buttom} onClick={this.submitHandler}>
+                <button  className={styles.buttom} onClick={this.submitHandler} >
                   Cash Payment
                 </button>
                 <span class="privacy-policy">

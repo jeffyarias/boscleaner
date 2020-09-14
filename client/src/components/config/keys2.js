@@ -1,1 +1,1 @@
-export const pusblishable_keys2 = 'pk_live_LgCWFDUqxmojNIGAZKRETwAx';
+export const pusblishable_keys2 = 'pk_test_yBMj0cqYIXUsXeJ0lnVBil1T';
