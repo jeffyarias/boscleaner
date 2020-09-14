@@ -9,10 +9,12 @@ const axios = require('axios');
 var path = require('path');
 var Router = require('router');
 const cors = require('cors');
-
+const enforce = require('express-sslify');
 var router = Router();
 mongoose.connect
 const app = express();
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -157,7 +159,7 @@ app.post('/api/form', (req, res) => {
      service: 'gmail',
      auth: {
       user: keys.Email_Address,
-      pass: 'Scorpion182177'
+      pass: keys.Email_Secret
       
  
      }
@@ -167,7 +169,7 @@ app.post('/api/form', (req, res) => {
  
      let mailOptions = {
       from: 'Boston Maids',
-      to: req.body.email ,
+      to: [req.body.email, 'jeffreyarias21@gmail.com'],
       subject: 'Cleaning',
       text: 'Cleaning Booking',
       html: htmlEmail,
