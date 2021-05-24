@@ -8,6 +8,9 @@ const axios = require('axios');
 var path = require('path');
 var Router = require('router');
 const cors = require('cors');
+const { google } = require('googleapis');
+var enforce = require('express-sslify');
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 var router = Router();
 mongoose.connect
@@ -20,7 +23,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 //app.post('/api/stripe', (req, res) => {console.log(req.body)});
 app.post('/api/stripe', async (req, res) => {
     console.log(req.body.service)
- 
+    const CLIENT_ID = '294754709967-u2ffp4u74beaok9j511vrt5dbe7pul1l.apps.googleusercontent.com';
+    const   CLIENT_SECRET = 'P85x0xcPKSnYuJRnOCHzwZpI';
+    const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+    const REFRESH_TOKEN = '1//04TtTZS7JT3EICgYIARAAGAQSNwF-L9IrEBwQPL_ZqsGgDpOVMveSm8b5Xujfj6qZmxgYVEcd9MH4Fho_RBQwlUHBB7HNcKg2EvE'
+    const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+    oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
+     
    let error;
    let status;
 
@@ -46,8 +55,8 @@ const customer = await stripe.customers.create({
     console.log(charge);
    status = "success";
 
-        nodemailer.createTestAccount((err, account)=>{
-         const htmlEmail = `<h3>Contact Detail</h3>
+
+   const htmlEmail = `<h3>Contact Detail</h3>
          <ul>
          <li>Name: ${service.name}</li>
          <li>Email: ${service.email}</li>
@@ -64,47 +73,57 @@ const customer = await stripe.customers.create({
          </ul>
          
          `
-         let transporter = nodemailer.createTransport({
-         service: 'gmail',
-         auth: {
-          user: 'jeffreyarias21@gmail.com',
-          pass: '182177!Scorpion'
-          
-     
-         }
-      
-     
-         });
-     
-         let mailOptions = {
-          from: 'Boston Maids',
-          to: 'jeffreyarias21@gmail.com' ,
-          subject: 'Cleaning',
-          text: 'Cleaning Booking',
-          html: htmlEmail,
-     
-     
-     
-         }
-         
-     transporter.sendMail(mailOptions, (err, info)=>{
-     
-     if(err) {
-     
-     console.log(err);
-     
-     }else {
-      console.log("Email send: " + info.response);
-     
-     
-     }
-     
-     });
-     
-     
-         });
- 
-     
+
+
+
+const CLIENT_ID = '294754709967-u2ffp4u74beaok9j511vrt5dbe7pul1l.apps.googleusercontent.com';
+const   CLIENT_SECRET = 'P85x0xcPKSnYuJRnOCHzwZpI';
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN = '1//040JPPxuZp2UsCgYIARAAGAQSNwF-L9IrwIyiH0lx3e2zRmWh9qm4JDxRTiplCiRhRGtP5Xdco0QDkP7dzSFZJMOZJ2aIqPXX790'
+const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
+
+
+async function sendEmail() {
+
+try {
+
+    const accessToken = await oauth2Client.getAccessToken()
+    const transport = nodemailer.createTransport({
+
+        service: 'gmail',
+        auth: {
+            type: 'Oauth2',
+            user: 'contactusbostonmaids@gmail.com',
+            clientId: CLIENT_ID,
+            clientSecret: CLIENT_SECRET,
+            refreshToken: REFRESH_TOKEN,
+            accessToken: accessToken
+        }
+
+    })
+    
+const mailOptions = {
+from: 'Boston Maids',
+to: [service.email, 'jeffreyarias21@gmail.com'],
+subject:"Booking Appoitment",
+html: htmlEmail
+
+
+};
+
+const result = await transport.sendMail(mailOptions)
+return result
+
+} catch (error) {
+    return error
+}
+
+
+}
+
+sendEmail().then(result=>console.log('Email sent...', result))
+.catch(error=> console.log(error.message));
    
 
     
@@ -128,7 +147,7 @@ const customer = await stripe.customers.create({
 });
 
 
-    app.post('/api/form', (req, res) => {
+  /*  app.post('/api/form', (req, res) => {
         // var newprice = req.body.price
      
          console.log(req.body);
@@ -153,8 +172,8 @@ const customer = await stripe.customers.create({
          let transporter = nodemailer.createTransport({
          service: 'gmail',
          auth: {
-          user: 'jeffreyarias21@gmail.com',
-          pass: '182177!Scorpion'
+          user: 'contactusbostonmaids@gmail.com',
+          pass: 'Scorpion182177'
           
      
          }
@@ -196,7 +215,7 @@ const customer = await stripe.customers.create({
 
 
 
-
+*/
 
 
 
