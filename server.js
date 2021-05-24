@@ -10,11 +10,12 @@ var Router = require('router');
 const cors = require('cors');
 const { google } = require('googleapis');
 var enforce = require('express-sslify');
+const app = express();
 app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 var router = Router();
 mongoose.connect
-const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
