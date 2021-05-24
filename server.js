@@ -32,7 +32,7 @@ app.post('/api/stripe', async (req, res) => {
      
    let error;
    let status;
-
+   let nothing;
    try { 
    const  { service, token } = req.body;
    console.log(service)
