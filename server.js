@@ -13,7 +13,7 @@ var enforce = require('express-sslify');
 const app = express();
 
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
+//app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 var router = Router();
 mongoose.connect
@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.post('/api/stripe', async (req, res) => {
     console.log(req.body.service)
     const CLIENT_ID = '294754709967-u2ffp4u74beaok9j511vrt5dbe7pul1l.apps.googleusercontent.com';
-    const   CLIENT_SECRET = 'P85x0xcPKSnYuJRnOCHzwZpI';
+    const CLIENT_SECRET = 'P85x0xcPKSnYuJRnOCHzwZpI';
     const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-    const REFRESH_TOKEN = '1//04TtTZS7JT3EICgYIARAAGAQSNwF-L9IrEBwQPL_ZqsGgDpOVMveSm8b5Xujfj6qZmxgYVEcd9MH4Fho_RBQwlUHBB7HNcKg2EvE'
+    const REFRESH_TOKEN = '1//04JTzfzTQxB8_CgYIARAAGAQSNwF-L9Ir0ZoPiDQ3OmLM3C4o6Xm0CAlGQ0vgLj-XVXjA4duzacUV7gMs57RYoqENyrQxp0GaZdY'
     const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
     oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
      

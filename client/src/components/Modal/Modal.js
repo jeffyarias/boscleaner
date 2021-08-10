@@ -6,7 +6,7 @@ import 'font-awesome/css/font-awesome.min.css';
 //import Payments from './Payments';
 //import StripeCheckout from 'react-stripe-checkout';
 
-const modal = (props)=> {
+const Modal = (props)=> {
 
 
    
@@ -35,7 +35,7 @@ return (
 
 </div>
 <div className={classes.cash}>
-<button className={classes.buttom} type="submit" name="submit">Cash Payment</button>
+
 </div>
 
 </div>
@@ -49,4 +49,4 @@ return (
 
 
 }
-export default modal;
+export default Modal;

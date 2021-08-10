@@ -1,21 +1,22 @@
 import React from 'react';
-import nav from  '../navbar.css';
+//import styles from  './NavBar';
+import styles from './NavBar.module.css';
 
 
 
 
-const navbar = ()=> {
+const NavBar = ()=> {
 
 return (
 
-<div class="nav">
+<div class={styles.nav}>
   <input type="checkbox" id="nav-check"/>
-  <div class="nav-header">
-    <div class="nav-title">
+  <div className={styles['nav-header']}>
+    <div className={styles['nav-title']}>
       Boston Maids
     </div>
   </div>
-  <div className="nav-btn">
+  <div className={styles['nav-btn']}>
     <label for="nav-check">
       <span></span>
       <span></span>
@@ -23,7 +24,7 @@ return (
     </label>
   </div>
   
-  <div className="nav-links">
+  <div className={`${styles['nav-links']} ${styles['nav-links']}`}>
     <a href="/" target="_blank">Book Now</a>
     <a href="/success" target="_blank"></a>
     <a href="/about" target="_blank">About Us</a>
@@ -38,4 +39,6 @@ return (
 };
 
 
-export default navbar;
+export default NavBar;
+
+

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "../style.css";
-import photo1 from "../images/01.jpg";
-import photo2 from "../images/02.jpg";
-import photo3 from "../images/03.jpg";
-import styles from "./App.module.css"
+import "./style.css";
+import photo1 from "./Images/01.jpg";
+import photo2 from "./Images/02.jpg";
+import photo3 from "./Images/03.jpg";
+
+//import styles from "./components/App.module.css"
 
 class Slider2 extends Component {
 

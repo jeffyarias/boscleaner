@@ -1,9 +1,10 @@
 import React from 'react';
-import extra from './css/Extras.module.css';
-import fridge from '../images/kitchen.png';
-import oven from '../images/gas-stove.png';
-import truck from '../images/moving-truck.png';
-import wiping from '../images/wiping.png'
+import extra from './Extras.module.css';
+import fridge from './images/kitchen.png';
+import oven from './images/gas-stove.png';
+import truck from './images/moving-truck.png';
+import wiping from './images/wiping.png'
+
 
 
 const extras = (props)=> {
